@@ -1,0 +1,34 @@
+# deployment.yml
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: webrelay
+  namespace: default
+  labels: 
+      name: "webrelay"     
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: webrelay
+      labels:
+        app: webrelay        
+    spec:
+      containers:                    
+        - image: docker.io/webrelay/ingress:latest
+          imagePullPolicy: Always            
+          name: webrelay
+          command: ["reingress"]
+          args: ["server", "--incluster"]
+          env:
+            - name: KEY
+              valueFrom:
+                secretKeyRef:
+                  name: webrelay-credentials
+                  key: key
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: webrelay-credentials
+                  key: secret    
