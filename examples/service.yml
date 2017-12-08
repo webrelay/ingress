@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    namespace: default
+    labels:
+      name: kuard
+      version: 0.0.1
+    name: kuard
+  spec:
+    ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080    
+    selector:
+      app: kuard
+    sessionAffinity: None
+    type: LoadBalancer    
