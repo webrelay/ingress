@@ -1,0 +1,22 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: kuard
+  namespace: default
+  labels: 
+      name: "kuard"     
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: kuard
+      labels:
+        app: kuard        
+    spec:
+      containers:                    
+        - image: gcr.io/kuar-demo/kuard-amd64:1
+          imagePullPolicy: Always            
+          name: kuard          
+          ports:
+            - containerPort: 8080
