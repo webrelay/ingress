@@ -18,4 +18,4 @@ items:
     selector:
       app: kuard
     sessionAffinity: None
-    type: LoadBalancer    
+    type: ClusterIP
