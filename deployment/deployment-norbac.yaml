@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: webrelay-ingress
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: webrelay
+  namespace: webrelay-ingress
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: webrelay
+  name: webrelay
+  namespace: webrelay-ingress
+spec:
+  selector:
+    matchLabels:
+      app: webrelay
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webrelay
+    spec:
+      containers:      
+      - image: docker.io/webrelay/ingress:latest
+        imagePullPolicy: Always
+        name: webrelay
+        command: ["reingress"]
+        args: ["server", "--incluster"]
+        env:
+          - name: KEY
+            valueFrom:
+              secretKeyRef:
+                name: webrelay-credentials
+                  key: key
+          - name: SECRET
+            valueFrom:
+              secretKeyRef:
+              name: webrelay-credentials
+              key: secret
+      dnsPolicy: ClusterFirst
+      serviceAccountName: webrelay
+      terminationGracePeriodSeconds: 30
