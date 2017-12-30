@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: webrelay    
+  name: relay-ingress
+  namespace: default
+spec:
+  rules:
+    - host: kuard.webrelay.io    
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: kuard
+            servicePort: 8080

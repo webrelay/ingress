@@ -37,12 +37,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: webrelay-credentials
-                  key: key
+                key: key
           - name: SECRET
             valueFrom:
               secretKeyRef:
-              name: webrelay-credentials
-              key: secret
+                name: webrelay-credentials
+                key: secret
       dnsPolicy: ClusterFirst
       serviceAccountName: webrelay
       terminationGracePeriodSeconds: 30     
