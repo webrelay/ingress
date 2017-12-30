@@ -22,6 +22,10 @@ Documentation on how to configure ingress resources with Web Relay ingress contr
 
 https://webhookrelay.com/v1/guide/ingress-controller#Configuration
 
+## See it in action
+
+<img src="https://webhookrelay.com/images/relay-ingress-kuard.gif">
+
 ## Reporting issues
 
 Issues or questions can be asked [here](https://github.com/webrelay/ingress/issues) or via email support@webhookrelay.com.
