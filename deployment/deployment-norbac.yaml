@@ -45,4 +45,4 @@ spec:
                 key: secret
       dnsPolicy: ClusterFirst
       serviceAccountName: webrelay
-      terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 10
