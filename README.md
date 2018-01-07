@@ -24,7 +24,7 @@ https://webhookrelay.com/v1/guide/ingress-controller#Configuration
 
 ## See it in action
 
-<img src="https://webhookrelay.com/images/relay-ingress-kuard.gif">
+<img src="https://webhookrelay.com/images/ingress-init.gif">
 
 ## Reporting issues
 
