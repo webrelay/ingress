@@ -4,6 +4,8 @@
 
 # Introduction
 
+[![Pulls](https://img.shields.io/docker/pulls/webrelay/ingress.svg)](https://img.shields.io/docker/pulls/webrelay/ingress.svg)
+
 This tool implements a Kubernetes ingress controller using tunnels to connect a Web Relay managed URL, ie: `https://yoursubdomain.webrelay.io` to a Kubernetes service based on ingress resources. Single ingress controller can manage multiple tunnels and route to multiple namespaces.
 
 <img src="https://webhookrelay.com/images/webrelay-ingress.png">
