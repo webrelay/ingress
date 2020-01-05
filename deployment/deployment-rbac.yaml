@@ -9,7 +9,7 @@ metadata:
   name: webrelay
   namespace: webrelay-ingress
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -43,11 +43,18 @@ spec:
               secretKeyRef:
                 name: webrelay-credentials
                 key: secret
+        resources:
+          limits:
+            cpu: 300m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
       dnsPolicy: ClusterFirst
       serviceAccountName: webrelay
       terminationGracePeriodSeconds: 10     
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: webrelay
@@ -60,7 +67,7 @@ subjects:
   name: webrelay
   namespace: webrelay-ingress
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: webrelay
